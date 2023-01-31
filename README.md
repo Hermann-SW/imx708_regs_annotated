@@ -44,6 +44,10 @@ Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
 (3839-768+1) = 2\*1536, (2159-432+1) = 2\*864, because that mode does 2x2binning.  
 
 
+Formula derived from FRM_LENGTH_A, framerate and y_output_size:  
+![framerate_formula](framerate_formula.png)  
+
+
 ### [0x0100-0x01ff]  
 ```
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [01-00-01]  start streaming
@@ -59,9 +63,9 @@ Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
 
 ### [0x0300-0x03ff]  
 ```
- i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-40-04] 1206 1336  2649  ??
+ i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-40-04] 1206 1336  2649  FRM_LENGTH_A[15:8]
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-41-b6]
- i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-42-14] 5216 7824 15648  ??
+ i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-42-14] 5216 7824 15648  LINE_LENGTH_A[15:8]
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-43-60]
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-44-03]  768    0     0  X_ADD_STA_A
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-45-00]
