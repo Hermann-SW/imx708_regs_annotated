@@ -41,7 +41,7 @@ Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
 ```
 (768..3839) x (432..2159)
 ```
-(3839-768+1) = 2*1536, (2159-432+1) = 2*864, because that mode does 2x2binning.  
+(3839-768+1) = 2\*1536, (2159-432+1) = 2\*864, because that mode does 2x2binning.  
 
 
 ### [0x0100-0x01ff]  
