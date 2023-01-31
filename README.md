@@ -36,23 +36,28 @@ i2c captures were taken for this command, with MODE being 1536:864, 2304:1296 or
 libcamera-vid --level 4.2 --mode MODE --framerate 5 --width 1536 --height 864 --save-pts t.pts -o t.h264 -t 1 --denoise cdn_off
 ```
 
-Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
+Left top corner for 1st mode is (768,432), for the other modes it is (0,0).  
+2nd and 3rd mode use full sensor area, 1st mode uses:  
+```
+(768..3839) x (432..2159)
+```
+(3839-768+1) = 2*1536, (2159-432+1) = 2*864, because that mode does 2x2binning.  
 
 
-[0x0100-0x01ff]  
+### [0x0100-0x01ff]  
 ```
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [01-00-01]  start streaming
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [01-00-00]  stop streaming
 ```
 
 
-[0x0200-0x02ff]  
+### [0x0200-0x02ff]  
 ```
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [02-02-04] 1158 1288  2601  ??
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [02-03-86]
 ```
 
-[0x0300-0x03ff]  
+### [0x0300-0x03ff]  
 ```
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-40-04] 1206 1336  2649  ??
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-41-b6]
@@ -72,7 +77,7 @@ Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [03-4f-60]
 ```
 
-[0x0400-0x04ff]  
+### [0x0400-0x04ff]  
 ```
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [04-0c-06] 1536 2304  4608  x_output_size (dup)
  i2c_write: i2c-10 #0 a=01a f=0000 l=3 [04-0d-00]
