@@ -44,7 +44,10 @@ Left top corner for 1st mode is (768,432), for the other modes it is (0,0).
 (3839-768+1) = 2\*1536, (2159-432+1) = 2\*864, because that mode does 2x2binning.  
 
 
-Formula derived from FRM_LENGTH_A, framerate and y_output_size:  
+The FRM_LENGTH_A values captured from i2c trace, multiplied by framerate result in "constant" for each mode.  
+Multiplying that "constant" with number of rows of the mode (y_output_size) results in constant 96,400,000.  
+FRM_LENGTH_A value can be determined for a given target framerate from that formula.  
+2nd row framerates determined from imx708 kernel driver "default" values for the three modes:   
 ![framerate_formula](framerate_formula.png)  
 
 
